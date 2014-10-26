@@ -17,7 +17,8 @@ angular
     'ngSanitize',
     'ngTouch',
 
-    'ledweb.main'
+    'ledweb.main',
+    'ledweb.leds'
   ])
   .config(function ($routeProvider) {
     $routeProvider
