@@ -2,30 +2,29 @@
 
 /**
  * @ngdoc overview
- * @name ledwebAppApp
+ * @name ledwebApp
  * @description
- * # ledwebAppApp
+ * # ledwebApp
  *
  * Main module of the application.
  */
 angular
-  .module('ledwebAppApp', [
+  .module('ledweb', [
     'ngAnimate',
     'ngCookies',
     'ngResource',
     'ngRoute',
     'ngSanitize',
-    'ngTouch'
+    'ngTouch',
+
+    'ledweb.main'
   ])
   .config(function ($routeProvider) {
     $routeProvider
       .when('/', {
-        templateUrl: 'views/main.html',
-        controller: 'MainCtrl'
-      })
-      .when('/about', {
-        templateUrl: 'views/about.html',
-        controller: 'AboutCtrl'
+        templateUrl: 'scripts/main/main.html',
+        controller: 'MainCtrl',
+        controllerAs: 'main'
       })
       .otherwise({
         redirectTo: '/'
