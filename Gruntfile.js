@@ -122,12 +122,12 @@ module.exports = function (grunt) {
           '<%= yeoman.app %>/scripts/{,*/}*.js'
         ]
       },
-      test: {
-        options: {
-          jshintrc: 'test/.jshintrc'
-        },
-        src: ['test/spec/{,*/}*.js']
-      }
+      // test: {
+      //   options: {
+      //     jshintrc: 'test/.jshintrc'
+      //   },
+      //   src: ['test/spec/{,*/}*.js']
+      // }
     },
 
     // Empties folders to start fresh
@@ -409,13 +409,13 @@ module.exports = function (grunt) {
     grunt.task.run(['serve:' + target]);
   });
 
-  grunt.registerTask('test', [
-    'clean:server',
-    'concurrent:test',
-    'autoprefixer',
-    'connect:test',
-    'karma'
-  ]);
+  // grunt.registerTask('test', [
+  //   'clean:server',
+  //   'concurrent:test',
+  //   'autoprefixer',
+  //   'connect:test',
+  //   'karma'
+  // ]);
 
   grunt.registerTask('build', [
     'clean:dist',
@@ -435,8 +435,8 @@ module.exports = function (grunt) {
   ]);
 
   grunt.registerTask('default', [
-    'newer:jshint',
-    'test',
+    // 'newer:jshint',
+    // 'test',
     'build'
   ]);
 };
