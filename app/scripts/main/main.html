@@ -1,3 +1,31 @@
 <div class="container">
-  hellosdfds
+  <h2>Status</h2>
+
+  <strong>Mode:</strong> {{ main.status.mode }}<br>
+  <pre>{{ main.status.params | json }}</pre>
+
+  <button class="btn btn-primary" ng-click="main.setRGB('#000000')">
+    Turn off
+  </button>
+
+  <h2>Random</h2>
+  <button class="btn btn-primary" ng-click="main.setRandom()">
+    Set random color
+  </button>
+
+  <h2>Set RGB</h2>
+  <div class="input-group">
+    <input colorpicker="hex" class="form-control" ng-model="hexPicker.color" type="text"
+        ng-init="hexPicker.color = '#ff0000'">
+    <span class="input-group-btn">
+        <button class="btn btn-primary" type="button" ng-click="main.setRGB(hexPicker.color)"
+            style="background-color: {{ hexPicker.color }}">Set color</button>
+      </span>
+  </div>
+
+  <h2>Set sound</h2>
+  <button class="btn btn-primary" ng-click="main.setSound()">
+    Set sound mode
+  </button>
+
 </div>

@@ -17,6 +17,8 @@ angular
     'ngSanitize',
     'ngTouch',
 
+    'colorpicker.module',
+
     'ledweb.main',
     'ledweb.leds'
   ])
