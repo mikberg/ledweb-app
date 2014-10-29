@@ -1,15 +1,26 @@
 'use strict';
 
 angular.module('ledweb.leds')
-.factory('Led', function($http) {
-  var url = 'http://localhost:5000/api';
+.factory('Led', function($http, Servers) {
 
-  function getMode() {
-    return $http.get(url);
+  Servers.load();
+  var settings = {
+    url: Servers.url
+  };
+
+  function setUrl(url) {
+    settings.url = url;
+  }
+
+  function getMode(url, timeout) {
+    url = url ? url : settings.url;
+    return $http.get(url, {
+      timeout: timeout ? timeout : 500
+    });
   }
 
   function setMode(mode, params) {
-    return $http.post(url, {
+    return $http.post(settings.url, {
       mode: mode,
       params: params
     });
@@ -39,7 +50,8 @@ angular.module('ledweb.leds')
 
 
   return {
-    url: url,
+    settings: settings,
+    setUrl: setUrl,
     getMode: getMode,
     setMode: setMode,
     setRGB: setRGB,

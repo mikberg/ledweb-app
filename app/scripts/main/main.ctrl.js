@@ -4,6 +4,8 @@ angular.module('ledweb.main')
 .controller('MainCtrl', function(Led) {
   var ctrl = this;
 
+  this.led = Led;
+
   function success(status) {
     ctrl.status = status;
   }
