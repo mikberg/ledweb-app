@@ -1,10 +1,18 @@
 'use strict';
 
 angular.module('ledweb.main')
-.controller('MainCtrl', function(Led) {
+.controller('MainCtrl', function(Led, $location, Servers) {
   var ctrl = this;
 
   this.led = Led;
+
+  var search = $location.search();
+  console.log(search);
+  if (search.url) {
+    Led.setUrl(search.url);
+    Servers.url = search.url;
+    Servers.store();
+  }
 
   function success(status) {
     ctrl.status = status;
