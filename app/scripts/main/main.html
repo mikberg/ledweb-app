@@ -1,35 +1,86 @@
 <div class="container">
-  <h2>Choose server</h2>
   <server-chooser></server-chooser>
-  <status server="main.led.settings.url"></status>
+  <status server="main.led.settings.url" validated="validated"></status>
 
-  <h2>Status</h2>
+  <div ng-if="validated" class="row">
 
-  <strong>Mode:</strong> {{ main.status.mode }}<br>
-  <pre>{{ main.status.params | json }}</pre>
+    <!-- Status -->
+    <div class="col-md-4">
+      <div class="panel panel-default">
+        <div class="panel-heading">Status</div>
+        <div class="panel-body">
+          <dl class="dl-horizontal">
+            <dt>Status</dt>
+            <dd>{{ main.status.mode }}</dd>
 
-  <button class="btn btn-primary" ng-click="main.setRGB('#000000')">
-    Turn off
-  </button>
+            <dt ng-repeat-start="(name, value) in main.status.params">{{ name }}</dt>
+            <dd ng-repeat-end>{{ value }}</dd>
 
-  <h2>Random</h2>
-  <button class="btn btn-primary" ng-click="main.setRandom()">
-    Set random color
-  </button>
+          </dl>
+        </div>
+      </div>
+    </div>
 
-  <h2>Set RGB</h2>
-  <div class="input-group">
-    <input colorpicker="hex" class="form-control" ng-model="hexPicker.color" type="text"
-        ng-init="hexPicker.color = '#ff0000'">
-    <span class="input-group-btn">
-        <button class="btn btn-primary" type="button" ng-click="main.setRGB(hexPicker.color)"
-            style="background-color: {{ hexPicker.color }}">Set color</button>
-      </span>
+    <!-- Turn off -->
+    <div class="col-md-4">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          Turn off
+        </div>
+        <div class="panel-body">
+          <button class="btn btn-primary btn-block" ng-click="main.setRGB('#000000')">
+            Turn off
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Random -->
+    <div class="col-md-4">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          Random color
+        </div>
+        <div class="panel-body">
+          <button class="btn btn-primary btn-block" ng-click="main.setRandom()">
+            Set random color
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Set RGB -->
+    <div class="col-sm-4">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          Set color
+        </div>
+        <div class="panel-body">
+          <div class="input-group">
+            <input colorpicker="hex" class="form-control" ng-model="hexPicker.color" type="text"
+                ng-init="hexPicker.color = '#ff0000'">
+            <span class="input-group-btn">
+                <button class="btn btn-primary" type="button" ng-click="main.setRGB(hexPicker.color)"
+                    style="background-color: {{ hexPicker.color }}">Set color</button>
+              </span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-sm-4">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          Sound mode
+        </div>
+        <div class="panel-body">
+          <button class="btn btn-primary btn-block" ng-click="main.setSound()">
+            Set sound mode
+          </button>
+        </div>
+      </div>
+    </div>
+
+
   </div>
-
-  <h2>Set sound</h2>
-  <button class="btn btn-primary" ng-click="main.setSound()">
-    Set sound mode
-  </button>
-
 </div>

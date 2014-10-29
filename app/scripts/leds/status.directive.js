@@ -5,7 +5,8 @@ angular.module('ledweb.leds')
   return {
     templateUrl: 'scripts/leds/status.directive.html',
     scope: {
-      server: '='
+      server: '=',
+      validated: '='
     },
     link: function(scope) {
       function validate(server) {
