@@ -3,9 +3,10 @@
 angular.module('ledweb.leds')
 .directive('status', function(Led) {
   return {
-    templateUrl: '/scripts/leds/status.directive.html',
+    templateUrl: 'scripts/leds/status.directive.html',
     scope: {
-      server: '='
+      server: '=',
+      validated: '='
     },
     link: function(scope) {
       function validate(server) {
