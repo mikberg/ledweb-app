@@ -4,7 +4,7 @@ angular.module('ledweb.leds')
 .directive('serverChooser', function() {
   return {
     scope: {},
-    templateUrl: '/scripts/leds/serverchooser.directive.html',
+    templateUrl: 'scripts/leds/serverchooser.directive.html',
     controller: function($scope, Led, Servers) {
       $scope.led = Led;
       $scope.url = Led.settings.url;
