@@ -1,18 +1,22 @@
 'use strict';
 
 angular.module('ledweb.leds')
-.factory('Led', function($http) {
+.factory('Led', function($http, Servers) {
 
+  Servers.load();
   var settings = {
-    url: 'http://localhost:5000/api'
+    url: Servers.url
   };
 
   function setUrl(url) {
     settings.url = url;
   }
 
-  function getMode() {
-    return $http.get(settings.url);
+  function getMode(url, timeout) {
+    url = url ? url : settings.url;
+    return $http.get(url, {
+      timeout: timeout ? timeout : 500
+    });
   }
 
   function setMode(mode, params) {
