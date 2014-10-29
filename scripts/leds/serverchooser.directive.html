@@ -1,11 +1,13 @@
-<div class="form-group">
-  <label for="url">URL</label>
-  <div class="input-group">
-    <input type="text" class="form-control" ng-model="url">
-    <div class="input-group-btn">
-      <button class="btn btn-primary" ng-click="set(url)">
-        Set
-      </button>
+<form ng-submit="set(url)">
+  <div class="form-group">
+    <label for="url">Server URL</label>
+    <div class="input-group">
+      <input type="text" class="form-control" ng-model="url">
+      <div class="input-group-btn">
+        <button type="submit" class="btn btn-primary">
+          Set
+        </button>
+      </div>
     </div>
   </div>
-</div>
+</form>
