@@ -2,14 +2,21 @@
 
 angular.module('ledweb.leds')
 .factory('Led', function($http) {
-  var url = 'http://localhost:5000/api';
+
+  var settings = {
+    url: 'http://localhost:5000/api'
+  };
+
+  function setUrl(url) {
+    settings.url = url;
+  }
 
   function getMode() {
-    return $http.get(url);
+    return $http.get(settings.url);
   }
 
   function setMode(mode, params) {
-    return $http.post(url, {
+    return $http.post(settings.url, {
       mode: mode,
       params: params
     });
@@ -39,7 +46,8 @@ angular.module('ledweb.leds')
 
 
   return {
-    url: url,
+    settings: settings,
+    setUrl: setUrl,
     getMode: getMode,
     setMode: setMode,
     setRGB: setRGB,
