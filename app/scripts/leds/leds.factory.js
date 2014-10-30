@@ -26,14 +26,12 @@ angular.module('ledweb.leds')
     });
   }
 
-  function setRGB(hex) {
-    var red = parseInt(hex.substr(1, 2), 16) / 255;
-    var green = parseInt(hex.substr(3, 2), 16) / 255;
-    var blue = parseInt(hex.substr(5, 2), 16) / 255;
+  function setOff() {
+    return setMode('off', {});
+  }
 
-    return setMode('rgb', {
-      red: red, green: green, blue: blue
-    });
+  function setRGB(params) {
+    return setMode('rgb', params);
   }
 
   function setRandom() {
@@ -44,8 +42,8 @@ angular.module('ledweb.leds')
     });
   }
 
-  function setSound() {
-    return setMode('sound', {});
+  function setSound(params) {
+    return setMode('sound', params);
   }
 
 
@@ -56,6 +54,7 @@ angular.module('ledweb.leds')
     setMode: setMode,
     setRGB: setRGB,
     setRandom: setRandom,
-    setSound: setSound
+    setSound: setSound,
+    setOff: setOff
   };
 });

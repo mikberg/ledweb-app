@@ -7,7 +7,6 @@ angular.module('ledweb.main')
   this.led = Led;
 
   var search = $location.search();
-  console.log(search);
   if (search.url) {
     Led.setUrl(search.url);
     Servers.url = search.url;
@@ -34,8 +33,12 @@ angular.module('ledweb.main')
     return Led.getMode().success(success).error(error);
   };
 
-  this.setSound = function() {
-    return Led.setSound().success(success).error(error);
+  this.setSound = function(params) {
+    return Led.setSound(params).success(success).error(error);
+  };
+
+  this.setOff = function() {
+    return Led.setOff().success(success).error(error);
   };
 
 
